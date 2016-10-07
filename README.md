@@ -1,4 +1,4 @@
-# To Do List - scrawny-starfish
+# To Do List  (scrawny-starfish)
 ## Description
 
 Complete a to do list app deployed to heroku.
