@@ -42,6 +42,6 @@ The App: As a user...
 ## License 
 <!-- LICENSE -->
 
-<br />This work is licensed under a <a rel="license" href="https://github.com/ameliavoncat/scrawny-starfish/blob/master/LICENSE">MIT License</a>.
+<br />This work is licensed under the <a rel="license" href="https://github.com/ameliavoncat/scrawny-starfish/blob/master/LICENSE">MIT License</a>.
 
 [mit-license]: https://opensource.org/licenses/MIT
