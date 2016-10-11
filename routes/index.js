@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const {List} = require('../database/db.js')
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  List.getItems()
+    .then( items => res.render( 'index', {list_items: items}))
 });
 
 module.exports = router;
