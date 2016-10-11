@@ -17,11 +17,9 @@ const findUserById = id => {
 const strategy = new LocalStrategy( paramsOptions, (email, password, done ) => {
   findUser( email, password )
     .then( user => {
-      console.log("email ", email, " password ", password)
       if( user === null ) {
         done( null, false, { message: 'Incorrect email or password.' })
       } else {
-        console.log("You're a winner!")
         done( null, user )
       }
     })
