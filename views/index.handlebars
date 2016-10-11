@@ -1,22 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12"><h1>Lists Like Woah!</h1></div>
+<div class="container-fluid">
+  <nav class="navbar">
+    <div class="nav navbar-nav">
+      <h1 class="navbar-brand">Lists Like Woah!</h1></div>
 
-    <div class="col-xs-2"></div>
-      <div id="list" class="col-xs-8">
+      <a id="user-info" class="pull-right" href="#">User Info</a>
+
+  </nav>
+
+  <div class="row">
+      <div id="list" class="col-xs-12">
         <h2>My List</h2>
-        {{#each list_items}}
-          <h5>{{todo}}</h5>
-        {{/each}}
+        <form>
+          {{#each list_items}}
+            <div class="row">
+              <div class="col-xs-1"><h4>{{list_order}}</h4></div>
+              <div class="col-xs-8">
+                <h5>{{todo}}</h5>
+                <p>{{description}}</p>
+              </div>
+              <div class="col-xs-1"><input type="checkbox"></input></div>
+            </div>
+          {{/each}}
+        </form>
       </div>
-    <div class="col-xs-2"></div>
+
 
 
   </div>
-
-
-
-
 </div>
-
-<h1>We did it!</h1>
