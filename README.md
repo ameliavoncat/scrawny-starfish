@@ -25,15 +25,10 @@ The App: As a user...
 
 #### Additional Specs: 
 - [ ] Create the back end using node and express.
-- [ ] Deploy the app to heroku. 
 - [ ] Create a database of to do list items.
 - [ ] JS Lint finds no mistakes
 - [ ] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
 - [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
-
-#### Stretch Goals/Nice to Have's:
-- [ ] I can create mulitple lists of to do's.
-- [ ] Write the app using ES6 and deploy using babel.
 
 
 
