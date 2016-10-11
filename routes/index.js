@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const {List} = require('../database/db.js')
+const {List} = require('../database/items.js')
 
-router.get('/', function(req, res, next) {
+router.get('/', function(request, response, next) {
   List.getItems()
-    .then( items => res.render( 'index', {list_items: items}))
+    .then( items => response.render( 'index', {list_items: items}))
 });
 
 module.exports = router;
