@@ -53,11 +53,19 @@ router.get( '/logout', ( request, response ) => {
   response.redirect( '/' )
 })
 
+router.post('/:id/add', (request, response) => {
+  const {id}=request.params
+  const {todo, description, length} = request.body
+  let listorder = length + 1
+  List.addItem(id, todo, description, listorder)
+    .then( results => response.redirect('/' + results.id))
+})
 
 router.get('/:id', (request, response) => {
   const {id}=request.params
+
   List.getItems(id)
-    .then( items => response.render( 'index', {list_items: items}))
+    .then( items =>response.render( 'index', {items}))
 })
 
 module.exports = router;

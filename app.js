@@ -5,10 +5,11 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const handlebars= require('express-handlebars')
-const routes = require('./routes/index');
-const users = require('./routes/users');
-const passport = require( './passport' );
 const jquery = require('jquery');
+const passport = require( './passport' );
+
+const routes = require('./routes/index');
+const users = require('./routes/users')
 
 const app = express();
 
@@ -36,7 +37,6 @@ app.use(passport.session())
 
 app.use('/', routes);
 app.use('/users', users);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
