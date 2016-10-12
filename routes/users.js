@@ -59,19 +59,28 @@ router.get( '/:user_id/:id/delete', (request, response) => {
   .then(response.redirect('/users/'+user_id))
 })
 
+router.get( '/:user_id/:id/edit', (request, response) => {
+  const { id } = request.params
+
+  List.getOneItem(id)
+  .then( result => response.render( 'edit', {result} ) )
+})
+
+router.post( '/:user_id/:id/edit', (request, response) => {
+  const { id, user_id } = request.params
+  const { todo, description, length} = request.body
+  // let list_order = parseInt(length) + 1
+  // console.log(todo, description, length, list_order, id)
+  List.editItem(todo, description, 5, id)
+  .then( result => response.redirect( '/users/' + user_id) )
+})
+
+
 router.get( '/:user_id/:id/:checked', (request, response) => {
   const {user_id, id, checked} = request.params
-  // // console.log(request.params);
-  // let checkedTrue=true;
-  // let checkedFalse=false;
-  // let isChecked;
   let isChecked;
+  (checked == "true") ? isChecked=false : isChecked=true
 
-  if(checked == "true"){
-      isChecked=false
-  } else {
-      isChecked=true
-  }
   console.log(isChecked);
   List.checkItem(isChecked, id)
   .then(response.redirect('/users/'+user_id))
