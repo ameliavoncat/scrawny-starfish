@@ -18,10 +18,10 @@ Goals
 The App: As a user...
 - [X] I can create to do list items.
 - [X] I can delete unwanted to do list items.
-- [ ] I can check items off as completed.
+- [X] I can check items off as completed.
 - [ ] I can rearrange to do list items.
 - [X] I can log into my account.
-- [ ] I can edit the text on existing to do's.
+- [X] I can edit the text on existing to do's.
 
 #### Additional Specs:
 - [X] Create the back end using node and express.
