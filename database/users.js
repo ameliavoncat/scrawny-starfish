@@ -9,18 +9,20 @@ const saltRounds = 10
 const User = {
   find: (email, password) => {
     return db.oneOrNone( 'SELECT * FROM users WHERE email=$1', [email] )
-    // .then( user => comparePassword( password, user ))
+      .then( user => {
+        return comparePassword( password, user )
+    })
   },
   findById: id => db.one( 'SELECT * FROM users WHERE id=$1', [id] ),
   createOne: (email, password) => {
-    // return createSalt( password )
-    //   .then( hashPassword )
-    //   .then( hash => {
+    return createSalt( password )
+      .then( hashPassword )
+      .then( hash => {
         return db.one(
           'INSERT INTO users(email, password) VALUES ($1, $2) RETURNING *',
-          [email, password]
+          [email, hash]
         )
-      // })
+      })
   }
 }
 
@@ -52,6 +54,7 @@ const hashPassword = saltResult => {
   })
 }
 
+
 const comparePassword = (password, user) => {
   return new Promise( (resolve, reject) => {
     bcrypt.compare( password, user.password, (err, result) => {
@@ -61,5 +64,6 @@ const comparePassword = (password, user) => {
     })
   })
 }
+
 
 module.exports={User}

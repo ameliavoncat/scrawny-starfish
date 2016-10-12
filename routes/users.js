@@ -34,7 +34,7 @@ router.post( '/signup', (request, response, next) => {
       })
     })
     .catch( error => {
-      response.render( 'auth/signup', { message: 'That email address is not available.' })
+      response.render( 'signup', { message: 'That email address is not available.' })
     })
 })
 
