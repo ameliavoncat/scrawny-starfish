@@ -11,11 +11,13 @@ const createListItem = `
 `
 const deleteListItem = 'DELETE FROM list_items WHERE id = $1'
 
+const checkItem = 'UPDATE list_items SET checked = $1 WHERE id = $2'
 
 //TODO - Make list order function
 
-List={
-  getItems: () =>  db.any(getAllListItems, [1]),
+List = {
+  getItems: user_id => db.any(getAllListItems, [user_id]),
+  checkItem: ( checked_status, id ) => db.none(checkItem, [checked_status, id])
 }
 
 module.exports = {List}
