@@ -1,8 +1,13 @@
-const { List } = require('../database/items.js')
+// const { List } = require('../database/items.js')
+// import ('../database/items.js')
 
 $(document).ready(function(){
-  function checkedItem(id){
     $('.checkbox').change(function() {
-      List.checkedItem(this.checked, id);
+     var id=  this.id;
+     var checkedStatus= this.checked;
+
+     
+     return (checkedStatus, id);
+      // List.checkedItem(this.checked, this.id);
     })
 })
