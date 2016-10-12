@@ -14,6 +14,7 @@ const User = {
     })
   },
   findById: id => db.one( 'SELECT * FROM users WHERE id=$1', [id] ),
+  findUserByEmail: email => db.one( 'SELECT * FROM users WHERE email=$1', [email]),
   createOne: (email, password) => {
     return createSalt( password )
       .then( hashPassword )

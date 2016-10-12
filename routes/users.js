@@ -14,7 +14,16 @@ router.get('/login', (request, response) => {
   response.render('login')
 });
 
-router.post('/login', passport.authenticate( 'local', authOptions ))
+router.post('/login', passport.authenticate( 'local'), function( request, response ) {
+  const email = request.body.email
+
+  User.findUserByEmail(email)
+    .then( result => {
+      console.log(result)
+      response.redirect( '/users/' + result.id)
+  })
+  
+})
 
 
 router.get('/signup', (request, response) => {
@@ -46,8 +55,9 @@ router.get( '/logout', ( request, response ) => {
 
 
 router.get('/:id', (request, response) => {
-  List.getItems()
-    .then( items => response.render( 'index', {list_items: items}))
+  // List.getItems()
+  //   .then( items => response.render( 'index', {list_items: items}))
+  response.render('index')
 })
 
 module.exports = router;
