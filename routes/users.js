@@ -22,7 +22,7 @@ router.post('/login', passport.authenticate( 'local'), function( request, respon
       console.log(result)
       response.redirect( '/users/' + result.id)
   })
-  
+
 })
 
 
@@ -55,9 +55,9 @@ router.get( '/logout', ( request, response ) => {
 
 
 router.get('/:id', (request, response) => {
-  // List.getItems()
-  //   .then( items => response.render( 'index', {list_items: items}))
-  response.render('index')
+  const {id}=request.params
+  List.getItems(id)
+    .then( items => response.render( 'index', {list_items: items}))
 })
 
 module.exports = router;

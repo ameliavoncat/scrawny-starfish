@@ -7,24 +7,24 @@
 
   </nav>
 
+
   <div class="row">
       <div id="list" class="col-xs-12">
         <h2>My List</h2>
-        <form>
+
           {{#each list_items}}
+          <form method="post">
             <div class="row">
               <div class="col-xs-1"><h4>{{list_order}}</h4></div>
               <div class="col-xs-8">
                 <h5>{{todo}}</h5>
                 <p>{{description}}</p>
               </div>
-              <div class="col-xs-1"><input type="checkbox"></input></div>
+              <div class="col-xs-1"><input id="{{id}}" class="checkbox" type="checkbox"></input></div>
             </div>
+          </form>
           {{/each}}
-        </form>
+
       </div>
-
-
-
   </div>
 </div>
