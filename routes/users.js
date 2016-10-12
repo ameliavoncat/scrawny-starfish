@@ -56,9 +56,9 @@ router.get( '/logout', ( request, response ) => {
 router.post('/:id/add', (request, response) => {
   const {id}=request.params
   const {todo, description, length} = request.body
-  let listorder = length + 1
+  let listorder = parseInt(length)+1
   List.addItem(id, todo, description, listorder)
-    .then( results => response.redirect('/' + results.id))
+    .then(response.redirect('/users/' + id))
 })
 
 router.get('/:id', (request, response) => {
