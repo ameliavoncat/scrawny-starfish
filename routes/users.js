@@ -61,13 +61,19 @@ router.get( '/:user_id/:id/delete', (request, response) => {
 
 router.get( '/:user_id/:id/:checked', (request, response) => {
   const {user_id, id, checked} = request.params
+  // // console.log(request.params);
+  // let checkedTrue=true;
+  // let checkedFalse=false;
+  // let isChecked;
   let isChecked;
-  if(checked){
-      isChecked=false;
+
+  if(checked == "true"){
+      isChecked=false
   } else {
-    isChecked=true;
+      isChecked=true
   }
-  List.checkItem(isChecked,id)
+  console.log(isChecked);
+  List.checkItem(isChecked, id)
   .then(response.redirect('/users/'+user_id))
 })
 
