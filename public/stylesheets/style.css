@@ -7,3 +7,8 @@ body {
 a, a:hover, a:visited {
   color: darkred;
 }
+
+.checked_true{
+  text-decoration:line-through;
+
+}

@@ -2,6 +2,13 @@
 // import ('../database/items.js')
 
 $(document).ready(function(){
+  $('.checkbox').click(function(){
+      var id= this.id;
+      console.log("id in click function~~",id);
+      $('#todo_'+id).toggleClass('crossout')
+
+  })
+
     // $('.checkbox').change(function() {
     //  var id=  this.id;
     //  var checkedStatus= this.checked;
