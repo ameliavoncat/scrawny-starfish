@@ -18,7 +18,8 @@ const checkItem = 'UPDATE list_items SET checked = $1 WHERE id = $2'
 List = {
   getItems: user_id => db.any(getAllListItems, [user_id]),
   addItem: (user_id, todo, description, list_order) => db.none(createListItem, [user_id, todo, description, list_order]),
-  checkItem: ( checked_status, id ) => db.none(checkItem, [checked_status, id])
+  checkItem: ( checked_status, id ) => db.none(checkItem, [checked_status, id]),
+  deleteItem: id => db.none(deleteListItem, [id]) 
 }
 
 module.exports = {List}

@@ -53,6 +53,18 @@ router.get( '/logout', ( request, response ) => {
   response.redirect( '/' )
 })
 
+router.get( '/:user_id/:id/delete', (request, response) => {
+  const {user_id, id} = request.params
+  List.deleteItem(id)
+  .then(response.redirect('/users/'+user_id))
+})
+
+router.get( '/:user_id/:id/check', (request, response) => {
+  const {user_id, id} = request.params
+  List.checkItem(true,id)
+  .then(response.redirect('/users/'+user_id))
+})
+
 router.post('/:id/add', (request, response) => {
   const {id}=request.params
   const {todo, description, length} = request.body
