@@ -16,25 +16,25 @@ Goals
 
 #### User Stories:
 The App: As a user...
-- [ ] I can create to do list items.
-- [ ] I can delete unwanted to do list items.
+- [X] I can create to do list items.
+- [X] I can delete unwanted to do list items.
 - [ ] I can check items off as completed.
-- [ ] I can rearrange to do list items. 
-- [ ] I can log into my account.
+- [ ] I can rearrange to do list items.
+- [X] I can log into my account.
 - [ ] I can edit the text on existing to do's.
 
-#### Additional Specs: 
-- [ ] Create the back end using node and express.
-- [ ] Create a database of to do list items.
+#### Additional Specs:
+- [X] Create the back end using node and express.
+- [X] Create a database of to do list items.
 - [ ] JS Lint finds no mistakes
-- [ ] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [X] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
+- [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 
 
 ---
 
-## License 
+## License
 <!-- LICENSE -->
 
 <br />This work is licensed under the <a rel="license" href="https://github.com/ameliavoncat/scrawny-starfish/blob/master/LICENSE">MIT License</a>.
