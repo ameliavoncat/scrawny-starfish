@@ -117,7 +117,8 @@ router.post( '/:user_id/add', ( request, response ) => {
   console.log(user_id)
   List.newItemPriority(parseInt(user_id))
     .then( result => {
-      if (result.length === undefined){
+      console.log(result)
+      if (result.max === null){
         List.addItem( user_id, todo, description, 1 )
       } else {
         let ItemPriority = parseInt(result.max) + 1
