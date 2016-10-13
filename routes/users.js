@@ -132,8 +132,8 @@ router.post( '/:user_id/add', ( request, response ) => {
 
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
-  console.log(request.isAuthenticated() )
-  
+  console.log( request.isAuthenticated() )
+
   List.getItems( id )
     .then( items => {
       // console.log(items)

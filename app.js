@@ -7,10 +7,11 @@ const bodyParser = require('body-parser');
 const handlebars= require('express-handlebars')
 const jquery = require('jquery');
 const passport = require( './passport' );
+const session = require( 'express-session')
 
 const routes = require('./routes/index');
 const users = require('./routes/users')
-// const protectRoute = require( './database/protectRoute' )
+const protectRoute = require( './database/protectRoute' )
 
 const app = express();
 
@@ -31,7 +32,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
-// app.use(session({ secret: 'keyboard cat', cookie: {} }))
+
+app.use(session({
+  secret: 'keyboard cat',
+  cookie: {},
+  resave: true,
+  saveUninitialized:true
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 
