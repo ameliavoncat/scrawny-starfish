@@ -13,7 +13,7 @@ router.get( '/login', ( request, response ) => {
   response.render( 'login' )
 });
 
-router.post( '/login', passport.authenticate( 'local' ), function( request, response ) {
+router.post( '/login', passport.authenticate( 'local' ), ( request, response ) => {
   const email = request.body.email
 
   User.findUserByEmail( email )
@@ -132,7 +132,8 @@ router.post( '/:user_id/add', ( request, response ) => {
 
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
-
+  console.log(request.isAuthenticated() )
+  
   List.getItems( id )
     .then( items => {
       // console.log(items)

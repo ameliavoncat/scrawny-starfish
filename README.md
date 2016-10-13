@@ -19,14 +19,13 @@ The App: As a user...
 - [X] I can create to do list items.
 - [X] I can delete unwanted to do list items.
 - [X] I can check items off as completed.
-- [ ] I can rearrange to do list items.
+- [X] I can rearrange to do list items.
 - [X] I can log into my account.
 - [X] I can edit the text on existing to do's.
 
 #### Additional Specs:
 - [X] Create the back end using node and express.
 - [X] Create a database of to do list items.
-- [ ] JS Lint finds no mistakes
 - [X] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
 - [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 

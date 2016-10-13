@@ -10,6 +10,7 @@ const passport = require( './passport' );
 
 const routes = require('./routes/index');
 const users = require('./routes/users')
+// const protectRoute = require( './database/protectRoute' )
 
 const app = express();
 
@@ -34,9 +35,10 @@ app.use('jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 app.use('/', routes);
 app.use('/users', users);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
