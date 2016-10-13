@@ -35,10 +35,9 @@
           {{/each}}
       </div>
       <div id="add-item" class="form-group">
-        <form id="add-item-form" method="post" action="/users/{{items.0.user_id}}/add/">
+        <form id="add-item-form" method="post" action="/users/{{id}}/add/">
           <input class="form-control submission-form" name="todo" placeholder="Add To Do" type="text"> </input>
           <input class="form-control submission-form" name="description" placeholder="Item Description" type="text"> </input>
-          <input class="form-control submission-form" name="length" style="display:none" value="{{items.length}}"></input>
           <input type="submit" value="Submit" class="btn btn-success pull-right submit-todo-btn"></input>
         </form>
       </div>
