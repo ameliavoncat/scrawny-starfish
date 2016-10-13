@@ -67,7 +67,27 @@ router.get( '/:user_id/:id/edit', ( request, response ) => {
 router.post( '/:user_id/:id/edit', (request, response) => {
   const { id, user_id } = request.params
   const { todo, description, length} = request.body
-  List.editItem( todo, description, 5, id )
+
+  List.getOneItem(id)
+    .then( result =>  List.editItem( todo, description, result.list_order, id ) )
+    .then( result => response.redirect( '/users/' + user_id) )
+})
+
+router.get( '/:user_id/:id/:list_order/up', (request, response) => {
+  const { id, user_id, list_order} = request.params
+  const { todo, description} = request.body
+
+  List.moveItemPriority( list_order - 1, parseInt(user_id), list_order)
+    .then( List.moveItemPriority ( list_order, parseInt(user_id), list_order - 1))
+    .then( result => response.redirect( '/users/' + user_id) )
+})
+
+router.get( '/:user_id/:id/:list_order/down', (request, response) => {
+    const { id, user_id, list_order} = request.params
+  const { todo, description} = request.body
+
+  List.moveItemPriority( list_order + 1, parseInt(user_id), list_order)
+    .then( List.moveItemPriority ( list_order, parseInt(user_id), list_order + 1))
     .then( result => response.redirect( '/users/' + user_id) )
 })
 
@@ -81,20 +101,30 @@ router.get( '/:user_id/:id/:checked', ( request, response ) => {
     .then( response.redirect( '/users/' + user_id ))
 })
 
-router.post( '/:id/add', ( request, response ) => {
-  const { id } = request.params
+router.post( '/:user_id/add', ( request, response ) => {
+  const { user_id } = request.params
   const { todo, description, length } = request.body
-  let listorder = parseInt( length ) + 1
-
-  List.addItem( id, todo, description, listorder )
-    .then( response.redirect( '/users/' + id ))
+  
+  List.newItemPriority(parseInt(user_id))
+    .then( result => {
+      let ItemPriority = parseInt(result.max) + 1
+      List.addItem( user_id, todo, description, ItemPriority )
+    })
+    .then( response.redirect( '/users/' + user_id ))
 })
+
 
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
 
   List.getItems( id ) 
-    .then( items => response.render( 'index', { items } ))
+    .then( items => {
+      // console.log(items)
+      let sortedItems = items.sort( ( a, b ) => {
+        return a.list_order - b.list_order
+      })
+      response.render( 'index', { items : sortedItems } )
+    })
 })
 
 module.exports = router;

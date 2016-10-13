@@ -17,6 +17,8 @@ const editItem = `
   SET todo=$1, description=$2, list_order=$3
   WHERE id = $4
 `
+const moveItemPriority = "UPDATE list_items SET list_order = $1 WHERE user_id = $2 AND list_order = $3"
+const newItemPriority = "SELECT max(list_order) FROM list_items WHERE user_id = $1"
 
 List = {
   getItems: user_id => db.any( getAllListItems, [ user_id ]),
@@ -24,7 +26,9 @@ List = {
   addItem: ( user_id, todo, description, list_order ) => db.none( createListItem, [user_id, todo, description, list_order]),
   checkItem: ( checked_status, id ) => db.none( checkItem, [ checked_status, id ]),
   deleteItem: id => db.none( deleteListItem, [ id ]),
-  editItem: (todo, description, list_order, id) => db.none(editItem, [ todo, description, list_order, id ])
+  editItem: (todo, description, list_order, id) => db.none(editItem, [ todo, description, list_order, id ]),
+  moveItemPriority: (futureOrder, user_id, currentOrder) => db.none(moveItemPriority, [ futureOrder, user_id, currentOrder]),
+  newItemPriority: user_id => db.one( newItemPriority, [user_id] )
 }
 
 module.exports = {List}
