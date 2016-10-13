@@ -40,7 +40,7 @@ router.post( '/signup', ( request, response, next ) => {
         response.redirect( '/' )
       })
     })
-    
+
     .catch( error => {
       response.render( 'signup', { message: 'That email address is not available.' })
     })
@@ -74,21 +74,37 @@ router.post( '/:user_id/:id/edit', (request, response) => {
 })
 
 router.get( '/:user_id/:id/:list_order/up', (request, response) => {
-  const { id, user_id, list_order} = request.params
+  let { id, user_id, list_order} = request.params
   const { todo, description} = request.body
 
-  List.moveItemPriority( list_order - 1, parseInt(user_id), list_order)
-    .then( List.moveItemPriority ( list_order, parseInt(user_id), list_order - 1))
-    .then( result => response.redirect( '/users/' + user_id) )
+    list_order = parseInt( list_order )
+    user_id = parseInt( user_id )
+  if( list_order > 1 ){
+    List.moveItemPriority( list_order - 1, user_id, list_order)
+      .then( List.moveItemPriority ( list_order, user_id, list_order - 1))
+      .then( response.redirect( '/users/' + user_id) )
+  } else {
+    response.redirect( '/users/' + user_id)
+  }
 })
 
 router.get( '/:user_id/:id/:list_order/down', (request, response) => {
-    const { id, user_id, list_order} = request.params
+    let { id, user_id, list_order} = request.params
   const { todo, description} = request.body
 
-  List.moveItemPriority( list_order + 1, parseInt(user_id), list_order)
-    .then( List.moveItemPriority ( list_order, parseInt(user_id), list_order + 1))
-    .then( result => response.redirect( '/users/' + user_id) )
+  list_order = parseInt( list_order )
+  user_id = parseInt( user_id )
+
+  List.getListLength( user_id )
+  .then( length => {
+    if ( list_order < parseInt(length.count) ) {
+    List.moveItemPriority( list_order + 1, user_id, list_order)
+      .then( List.moveItemPriority ( list_order, user_id, list_order + 1))
+      .then( result => response.redirect( '/users/' + user_id) )
+    } else {
+      response.redirect( '/users/' + user_id)
+    }
+  })
 })
 
 
@@ -104,7 +120,7 @@ router.get( '/:user_id/:id/:checked', ( request, response ) => {
 router.post( '/:user_id/add', ( request, response ) => {
   const { user_id } = request.params
   const { todo, description, length } = request.body
-  
+
   List.newItemPriority(parseInt(user_id))
     .then( result => {
       let ItemPriority = parseInt(result.max) + 1
@@ -117,7 +133,7 @@ router.post( '/:user_id/add', ( request, response ) => {
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
 
-  List.getItems( id ) 
+  List.getItems( id )
     .then( items => {
       // console.log(items)
       let sortedItems = items.sort( ( a, b ) => {
