@@ -3,6 +3,8 @@
 
 $(document).ready(function(){
 
+  
+
   // $('.checkbox').click(function(){
   //     var id= this.id;
   //     console.log("id in click function~~",id);
