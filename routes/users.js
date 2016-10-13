@@ -13,7 +13,7 @@ router.get( '/login', ( request, response ) => {
   response.render( 'login' )
 });
 
-router.post( '/login', passport.authenticate( 'local' ), function( request, response ) {
+router.post( '/login', passport.authenticate( 'local' ), ( request, response ) => {
   const email = request.body.email
 
   User.findUserByEmail( email )
@@ -133,14 +133,16 @@ router.post( '/:user_id/add', ( request, response ) => {
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
 
-  List.getItems( id )
-    .then( items => {
-      // console.log(items)
-      let sortedItems = items.sort( ( a, b ) => {
-        return a.list_order - b.list_order
+  if( request.user.id == id ) {
+    return List.getItems( id )
+      .then( items => {
+        let sortedItems = items.sort( ( a, b ) => {
+          return a.list_order - b.list_order
+        })
+        response.render( 'index', { items : sortedItems } )
       })
-      response.render( 'index', { items : sortedItems } )
-    })
+  }
+  response.redirect( '/' )
 })
 
 module.exports = router;

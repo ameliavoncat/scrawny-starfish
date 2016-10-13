@@ -28,7 +28,6 @@ const User = {
 }
 
 
-
 const createSalt = password => {
   return new Promise( (resolve, reject) => {
     bcrypt.genSalt( saltRounds, (error, salt) => {
