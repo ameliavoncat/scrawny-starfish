@@ -9,7 +9,7 @@ body {
 }
 
 a, a:hover, a:visited {
-  color: darkred;
+  /*color: white;*/
 }
 
 .checked_true{
