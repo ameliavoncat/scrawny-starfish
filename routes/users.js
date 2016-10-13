@@ -132,12 +132,10 @@ router.post( '/:user_id/add', ( request, response ) => {
 
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
-  console.log( request.isAuthenticated() )
-  console.log('user', request.user)
+
   if( request.user.id == id ) {
     return List.getItems( id )
       .then( items => {
-        // console.log(items)
         let sortedItems = items.sort( ( a, b ) => {
           return a.list_order - b.list_order
         })
