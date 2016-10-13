@@ -9,23 +9,18 @@ const authOptions = {
   failureRedirect: '/users/login'
 }
 
-router.get( '/login', ( request, response ) => {
-  response.render( 'login' )
-});
 
 router.post( '/login', passport.authenticate( 'local' ), ( request, response ) => {
   const email = request.body.email
 
   User.findUserByEmail( email )
     .then( result => {
+      console.log(result.id)
+      console.log(request.user.id)
       response.redirect( '/users/' + result.id )
   })
 })
 
-
-router.get( '/signup', ( request, response ) => {
-  response.render( 'signup' );
-});
 
 router.post( '/signup', ( request, response, next ) => {
   const { email, password } = request.body
@@ -36,8 +31,7 @@ router.post( '/signup', ( request, response, next ) => {
         if( error ) {
           next( error )
         }
-
-        response.redirect( '/' )
+        response.redirect( '/users/' + user.id)
       })
     })
 
@@ -120,11 +114,15 @@ router.get( '/:user_id/:id/:checked', ( request, response ) => {
 router.post( '/:user_id/add', ( request, response ) => {
   const { user_id } = request.params
   const { todo, description, length } = request.body
-
+  console.log(user_id)
   List.newItemPriority(parseInt(user_id))
     .then( result => {
-      let ItemPriority = parseInt(result.max) + 1
-      List.addItem( user_id, todo, description, ItemPriority )
+      if (result.length === undefined){
+        List.addItem( user_id, todo, description, 1 )
+      } else {
+        let ItemPriority = parseInt(result.max) + 1
+        List.addItem( user_id, todo, description, ItemPriority )
+      }
     })
     .then( response.redirect( '/users/' + user_id ))
 })
@@ -139,7 +137,7 @@ router.get( '/:id', ( request, response ) => {
         let sortedItems = items.sort( ( a, b ) => {
           return a.list_order - b.list_order
         })
-        response.render( 'index', { items : sortedItems } )
+        response.render( 'index', { items : sortedItems, id } )
       })
   }
   response.redirect( '/' )
