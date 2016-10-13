@@ -8,15 +8,22 @@
   <div class="row">
       <div id="list" class="col-xs-12">
         <h2>My List</h2>
+        <div class="row list-header">
+          <div class="col-xs-2">Priority</div>
+          <div class="col-xs-6">What choo doin?</div>
+        </div>
           {{#each items}}
           <form method="post">
             <div class="row">
-              <div class="col-xs-1"><h4>{{list_order}}</h4></div>
+              <div class="col-xs-2">
+                <a class="btn btn-info up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/up">Up</a>
+                <a class="btn btn-info edit-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/down">Down</a>
+              </div>
               <div class="col-xs-6">
-                <h5 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h5>
+                <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
                 <p class="checked_{{checked}}">{{description}}</p>
               </div>
-              <div id="buttons" class="col-xs-4">
+              <div id="buttons" class="col-xs-3">
                 <a class="btn btn-danger delete-button" id="delete{{id}}" href="/users/{{user_id}}/{{id}}/delete">Delete</a>
                 <a class="btn btn-primary edit-button" id="edit{{id}}" href="/users/{{user_id}}/{{id}}/edit">Edit</a>
               </div>
@@ -27,12 +34,12 @@
           </form>
           {{/each}}
       </div>
-      <div id="add-item">
+      <div id="add-item" class="form-group">
         <form id="add-item-form" method="post" action="/users/{{items.0.user_id}}/add/">
-          <input name="todo" placeholder="Add To Do" type="text"> </input>
-          <input name="description" placeholder="Item Description" type="text"> </input>
-          <input name="length" style="display:none" value="{{items.length}}"></input>
-          <input type="submit" value="Submit"></input>
+          <input class="form-control submission-form" name="todo" placeholder="Add To Do" type="text"> </input>
+          <input class="form-control submission-form" name="description" placeholder="Item Description" type="text"> </input>
+          <input class="form-control submission-form" name="length" style="display:none" value="{{items.length}}"></input>
+          <input type="submit" value="Submit" class="btn btn-success pull-right submit-todo-btn"></input>
         </form>
       </div>
   </div>

@@ -1,7 +1,11 @@
+* {
+  border-radius: 0;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color:orange;
+  /*background-color: orange;*/
 }
 
 a, a:hover, a:visited {
@@ -22,3 +26,11 @@ h1 {
   margin: auto auto;
 }
 
+
+.submission-form {
+  margin: 5px;
+}
+
+.submit-todo-btn {
+  margin-top: 15px;
+}
