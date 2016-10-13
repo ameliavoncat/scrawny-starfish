@@ -11,3 +11,14 @@ a, a:hover, a:visited {
 .checked_true{
   text-decoration:line-through;
 }
+
+
+h1 {
+  font-family: 'Caveat Brush', cursive;
+}
+
+#splash-logo {
+  font-size: 3em;
+  margin: auto auto;
+}
+
