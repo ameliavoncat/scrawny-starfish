@@ -14,10 +14,10 @@
         </div>
           {{#each items}}
           <form method="post">
-            <div class="row">
+            <div class="row" id="row-index-{{@index}}">
               <div class="col-xs-2">
-                <a class="btn btn-info up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/up">Up</a>
-                <a class="btn btn-info edit-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/down">Down</a>
+                <a class="btn btn-info up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/up">Up</a>
+                <a class="btn btn-info down-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/down">Down</a>
               </div>
               <div class="col-xs-6">
                 <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
