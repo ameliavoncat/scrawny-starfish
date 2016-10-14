@@ -1,45 +1,72 @@
-<div class="container-fluid">
-  <nav class="navbar">
-    <div class="nav navbar-nav">
-      <h1 class="navbar-brand">Lists Like Woah!</h1></div>
-      <a id="logout-button" class="pull-right btn btn-primary" href="/users/logout">Logout</a>
-  </nav>
-
-  <div class="row">
-      <div id="list" class="col-xs-12">
-        <h2>My List</h2>
-        <div class="row list-header">
-          <div class="col-xs-2">Priority</div>
-          <div class="col-xs-6">What choo doin?</div>
+<div class="hero-head">
+  <header class="nav">
+    <div class="container">
+      <div class="nav-left">
+        <h1 class=" title nav-logo">listlike</h1>
+      </div>
+      <div class="nav-right">
+        <a id="logout-button" class="nav-item" href="/users/logout">
+          <span class="icon">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </span>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+<div id="list">
+  {{#each sortedItems}}
+    <form method="post" class="each-todo">
+      <div class="columns" id="row-index-{{@index}}">
+        <div class="column is-2">
+          <a class="up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/up">
+            <span class="icon">
+              <i class="fa fa-angle-up"></i>
+            </span>
+          </a>
+          <a class="down-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/down">
+            <span class="icon">
+              <i class="fa fa-angle-down"></i>
+            </span>
+          </a>
         </div>
-          {{#each sortedItems}}
-          <form method="post">
-            <div class="row" id="row-index-{{@index}}">
-              <div class="col-xs-2">
-                <a class="btn btn-info up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/up">Up</a>
-                <a class="btn btn-info down-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/down">Down</a>
-              </div>
-              <div class="col-xs-6">
-                <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
-                <p class="checked_{{checked}}">{{description}}</p>
-              </div>
-              <div id="buttons" class="col-xs-3">
-                <a class="btn btn-danger delete-button" id="delete{{id}}" href="/users/{{user_id}}/{{id}}/delete">Delete</a>
-                <a class="btn btn-primary edit-button" id="edit{{id}}" href="/users/{{user_id}}/{{id}}/edit">Edit</a>
-              </div>
-              <div class="col-xs-1">
-                <a id="checked{{id}}" class="btn btn-primary checkbox" type="checkbox" href="/users/{{user_id}}/{{id}}/{{checked}}">Done!</a>
-              </div>
-            </div>
-          </form>
-          {{/each}}
+        <div class="column is-6">
+          <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
+          <p class="checked_{{checked}}">{{description}}</p>
+        </div>
+        <div id="buttons" class="column">
+          <a id="delete{{id}}" class="delete-btn" href="/users/{{user_id}}/{{id}}/delete">
+            <span class="icon">
+              <i class="fa fa-trash"></i>
+            </span>
+          </a>
+          <a class="edit-btn" id="edit{{id}}" href="/users/{{user_id}}/{{id}}/edit">
+            <span class="icon">
+              <i class="fa fa-pencil"></i>
+            </span>
+          </a>
+        </div>
+        <div class="column">
+          <a id="checked{{id}}" class="done-btn" href="/users/{{user_id}}/{{id}}/{{checked}}">
+            <span class="icon">
+              <i class="fa fa-check"></i>
+            </span>
+          </a>
+        </div>
       </div>
-      <div id="add-item" class="form-group">
-        <form id="add-item-form" method="post" action="/users/{{id}}/add/">
-          <input class="form-control submission-form" name="todo" placeholder="Add To Do" type="text"> </input>
-          <input class="form-control submission-form" name="description" placeholder="Item Description" type="text"> </input>
-          <input type="submit" value="Submit" class="btn btn-success pull-right submit-todo-btn"></input>
-        </form>
-      </div>
+    </form>
+    {{/each}}
+</div>
+<div class="box">
+  <div id="add-item" class="control">
+    <form id="add-item-form" method="post" action="/users/{{id}}/add/">
+      <input class="input submission-form" name="todo" placeholder="Add To Do" type="text"> </input>
+      <input class="input submission-form" name="description" placeholder="Item Description" type="text"> </input>
+      <input id="add-btn" type="submit" value="Save" class="button is-primary">
+      </input>
+    </form>
   </div>
 </div>
+
+

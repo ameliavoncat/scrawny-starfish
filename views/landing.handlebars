@@ -1,17 +1,45 @@
-<h1 id="splash-logo" class="logo">ListLikeWoah</h1>
-<p>We'll help you handle your life so you can go on an adventure.</p>
+<section class="hero is-primary is-fullheight is-bold">
+  <div class="hero-head">
+    <header class="nav">
+      <div class="container">
+        <div class="nav-left">
+          <h1 id="nav-logo">listlike</h1>
+        </div>
+        <div class="nav-right">
+          {{#if id}}
+          <a id="logout-button" class="nav-item" href="/users/logout">
+            <span class="icon">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </span>
+            <span>Log Out</span>
+          </a>
+          {{/if}}
+        </div>
+      </div>
+    </header>
+  </div>
 
-<h3>Log In</h3>
-<form method="post" action="/users/login">
-  <input placeholder="Email" name="email" type="text"></input>
-  <input placeholder="Password" name="password" type="text"></input>
-  <input value="Submit" type="submit"></input>
-</form>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="splash-logo title">listlike</h1>
+    
+      <h2 class="subtitle">handle your shit quicker so you can go adventuring.</h2>
+    </div>
+  </div>
+  <div class="hero-foot">
 
+    <h3>Log In</h3>
+    <form method="post" action="/users/login">
+      <input placeholder="Email" name="email" type="text"></input>
+      <input placeholder="Password" name="password" type="text"></input>
+      <input value="Submit" type="submit"></input>
+    </form>
 
-<h3>Sign Up</h3>
-<form method="post" action="/users/signup">
-  <input placeholder="Email" name="email" type="text"></input>
-  <input placeholder="Password" name="password" type="text"></input>
-  <input value="Submit" type="submit"></input>
-</form>
+    <h3>Sign Up</h3>
+    <form method="post" action="/users/signup">
+      <input placeholder="Email" name="email" type="text" class="control"></input>
+      <input placeholder="Password" name="password" class="control" type="text"></input>
+      <input value="Submit" type="submit"></input>
+    </form>
+  </div>
+</section
