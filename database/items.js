@@ -25,6 +25,8 @@ const newItemPriority = "SELECT max(list_order) FROM list_items WHERE user_id = 
 const getLength = "SELECT COUNT(*) FROM list_items WHERE user_id = $1"
 const adjustForDeletion = "UPDATE list_items SET list_order = list_order - 1 WHERE user_id = $1 AND list_order > (SELECT list_order FROM list_items WHERE id=$2)"
 
+const checkEmail = "SELECT email FROM users WHERE email=$1 LIMIT 1"
+
 List = {
   getItems: user_id => db.any( getAllListItems, [ user_id ]),
   getOneItem: item_id => db.one( getSingleItem, [item_id]),
@@ -36,7 +38,8 @@ List = {
   switchItemPriorities: (futureOrder, user_id, currentOrder) => db.none(switchItemPriorities, [futureOrder, user_id, currentOrder]),
   newItemPriority: user_id => db.one( newItemPriority, [user_id] ),
   getListLength: user_id => db.one( getLength, [ user_id ]),
-  adjustForDeletion: (user_id, deleted_id) => db.none (adjustForDeletion, [user_id, deleted_id])
+  adjustForDeletion: (user_id, deleted_id) => db.none (adjustForDeletion, [user_id, deleted_id]),
+  checkEmail: (email) => db.oneOrNone (checkEmail, [email])
 }
 
 module.exports = {List}

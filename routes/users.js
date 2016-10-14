@@ -23,20 +23,32 @@ router.post( '/login', passport.authenticate( 'local' ), ( request, response ) =
 router.post( '/signup', ( request, response, next ) => {
   const { email, password } = request.body
 
-  User.createOne( email, password )
-    .then( user => {
-      request.login( { id: user.id, email }, error => {
-        if( error ) {
-          next( error )
-        }
-        response.redirect( '/users/' + user.id)
-      })
-    })
+  List.checkEmail(email)
+    .then( result => {
+      if(result!==null){
+        response.redirect('/')
+      }
+      else {
+        User.createOne( email, password )
+        .then(user => {
+          request.login( { id: user.id, email }, error => {
 
-    .catch( error => {
-      response.render( 'signup', { message: 'That email address is not available.' })
-    })
-})
+            if( error ) {
+              next( error )
+            }
+
+            response.redirect( '/users/' + user.id)
+          })
+        })
+
+        .catch( error => {
+          response.render( 'signup', { message: 'That email address is not available.' })
+
+      })
+        }
+      })
+  }
+)
 
 router.get( '/logout', ( request, response ) => {
   request.logout()
@@ -121,8 +133,8 @@ router.post( '/:user_id/add', ( request, response ) => {
       if (result.max === null){
         List.addItem( user_id, todo, description, 1 )
       } else {
-        let ItemPriority = parseInt(result.max) + 1
-        List.addItem( user_id, todo, description, ItemPriority )
+        let itemPriority = parseInt(result.max) + 1
+        List.addItem( user_id, todo, description, itemPriority )
       }
     })
     .then( response.redirect( '/users/' + user_id ))
