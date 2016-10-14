@@ -16,9 +16,10 @@
   </header>
 </div>
 <div id="list">
+  <h1 class="list-title">Ok, let's get this shit done...</h1>
   {{#each sortedItems}}
     <form method="post" class="each-todo">
-      <div class="columns" id="row-index-{{@index}}">
+      <div class="columns checked_{{checked}}" id="row-index-{{@index}}">
         <div class="column is-2">
           <a class="up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/up">
             <span class="icon">
@@ -31,9 +32,9 @@
             </span>
           </a>
         </div>
-        <div class="column is-6">
-          <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
-          <p class="checked_{{checked}}">{{description}}</p>
+        <div class="column is-7">
+          <h4 id="todo_{{id}}" class="checked_{{checked}} todo-title">{{todo}}</h4>
+          <p class="checked_{{checked}} todo-desc">{{description}}</p>
         </div>
         <div id="buttons" class="column">
           <a id="delete{{id}}" class="delete-btn" href="/users/{{user_id}}/{{id}}/delete">

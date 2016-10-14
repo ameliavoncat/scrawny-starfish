@@ -11,7 +11,9 @@ a, a:hover, a:visited {
 }
 
 .checked_true{
-  text-decoration:line-through;
+  color: #999;
+  background: #eee;
+  border-radius: .5;
 }
 
 
@@ -49,6 +51,21 @@ h1 {
 .each-todo {
   padding: 5px;
   margin:10px;
+}
+
+.todo-title {
+  font-size: 1.5em;
+  margin:5px;
+}
+
+.todo-desc{
+  margin: 5px;
+}
+
+.list-title{
+  margin: 0px 0px 30px 20px;
+  font-size: 2em;
+
 }
 
 #list {
