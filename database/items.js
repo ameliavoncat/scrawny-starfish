@@ -18,6 +18,8 @@ const editItem = `
   WHERE id = $4
 `
 const moveItemPriority = "UPDATE list_items SET list_order = $1 WHERE user_id = $2 AND list_order = $3"
+const switchItemPriorities = "UPDATE list_items SET list_order = (CASE WHEN list_order = $1 AND user_id=$2 THEN $3 WHEN list_order = $3 AND user_id=$2 THEN $1 ELSE list_order end)"
+
 const newItemPriority = "SELECT max(list_order) FROM list_items WHERE user_id = $1"
 
 const getLength = "SELECT COUNT(*) FROM list_items WHERE user_id = $1"
@@ -31,6 +33,7 @@ List = {
   deleteItem: id => db.none( deleteListItem, [ id ]),
   editItem: (todo, description, list_order, id) => db.none(editItem, [ todo, description, list_order, id ]),
   moveItemPriority: (futureOrder, user_id, currentOrder) => db.none(moveItemPriority, [ futureOrder, user_id, currentOrder]),
+  switchItemPriorities: (futureOrder, user_id, currentOrder) => db.none(switchItemPriorities, [futureOrder, user_id, currentOrder]),
   newItemPriority: user_id => db.one( newItemPriority, [user_id] ),
   getListLength: user_id => db.one( getLength, [ user_id ]),
   adjustForDeletion: (user_id, deleted_id) => db.none (adjustForDeletion, [user_id, deleted_id])
