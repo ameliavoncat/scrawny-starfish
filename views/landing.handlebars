@@ -3,7 +3,7 @@
     <header class="nav">
       <div class="container">
         <div class="nav-left">
-          <h1 id="nav-logo">listlike</h1>
+          <h1 id="title nav-logo">listlike</h1>
         </div>
         <div class="nav-right">
           {{#if id}}
@@ -21,25 +21,35 @@
 
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="splash-logo title">listlike</h1>
+      <h1 id="splash-logo"class="splash-logo title">listlike</h1>
     
       <h2 class="subtitle">handle your shit quicker so you can go adventuring.</h2>
     </div>
   </div>
   <div class="hero-foot">
-
-    <h3>Log In</h3>
-    <form method="post" action="/users/login">
-      <input placeholder="Email" name="email" type="text"></input>
-      <input placeholder="Password" name="password" type="text"></input>
-      <input value="Submit" type="submit"></input>
-    </form>
-
-    <h3>Sign Up</h3>
-    <form method="post" action="/users/signup">
-      <input placeholder="Email" name="email" type="text" class="control"></input>
-      <input placeholder="Password" name="password" class="control" type="text"></input>
-      <input value="Submit" type="submit"></input>
-    </form>
+    <div class="columns">
+      <div class="is-1"></div>
+      <div class="is-4 log">
+        <div class="box home-box">
+          <h1 class="login-logout-h1 has-text-centered">Log In</h1>
+          <form method="post" action="/users/login">
+            <input placeholder="Email" name="email" type="text" class="input landing-input"></input>
+            <input placeholder="Password" name="password" type="text" class="input landing-input"></input>
+            <input value="Log In" type="submit" class="button is-danger is-outlined landing-input"></input>
+          </form>
+        </div>
+      </div>
+      <div class="is-1"></div>
+      <div class="is-4 log">
+        <div class="box home-box">
+          <h1 class="login-logout-h1 has-text-centered">Sign Up</h1>
+          <form method="post" action="/users/signup">
+            <input placeholder="Email" name="email" type="text" class="input landing-input"></input>
+            <input placeholder="Password" name="password" class="input landing-input" type="text"></input>
+            <input value="Sign Up" type="submit" class="button is-danger is-outlined landing-input"></input>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </section

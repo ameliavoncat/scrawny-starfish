@@ -11,7 +11,9 @@ a, a:hover, a:visited {
 }
 
 .checked_true{
-  text-decoration:line-through;
+  color: #999;
+  background: #eee;
+  border-radius: .5;
 }
 
 
@@ -51,7 +53,41 @@ h1 {
   margin:10px;
 }
 
+.todo-title {
+  font-size: 1.5em;
+  margin:5px;
+}
+
+.todo-desc{
+  margin: 5px;
+}
+
+.list-title{
+  margin: 0px 0px 30px 20px;
+  font-size: 2em;
+  color: #ff3860;
+}
+
 #list {
   margin: 40px 50px 10px 50px;
-  margin
+
+}
+
+.landing-input{
+  margin: 10px 0px 10px 0px;
+}
+
+.log {
+  margin:100px;
+}
+
+.login-logout-h1 {
+  font-size:1.8em;
+  margin:5px;
+  color: #ff3860;
+}
+
+.home-box{
+  background-color: rgba(0,0,0,0);
+  border:1px solid #ff3860;;
 }
