@@ -4,18 +4,28 @@
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Delius+Unicase|Nova+Flat|Righteous|Roboto+Mono|Rock+Salt|Special+Elite" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css"/>
-
-    <link rel='stylesheet' href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    
-
-
   </head>
   <body>
+    <nav class="nav">
+      <div class="nav-left">
+        <h1>Lists Like Woah!</h1>
+      </div>
+      <div class="nav-right">
+        {{#if id}}
+        <a id="logout-button" class="nav-item" href="/users/logout">
+          <span class="icon">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </span>
+          <span>Log Out</span>
+        </a>
+        {{/if}}
+      </div>
+    </nav>
     {{{body}}}
     <script language="javascript" type="text/javascript" href='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
     <script language="javascript" type="text/javascript" href='../javascripts/frontend.js'></script>

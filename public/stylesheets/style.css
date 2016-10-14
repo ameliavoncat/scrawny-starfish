@@ -26,11 +26,18 @@ h1 {
   margin: auto auto;
 }
 
+.box {
+  margin:40px 20px;
+}
 
 .submission-form {
-  margin: 5px;
+  margin: 10px;
 }
 
 .submit-todo-btn {
-  margin-top: 15px;
+  margin-top: 25px;
+}
+
+#add-btn {
+  margin: 10px;
 }
