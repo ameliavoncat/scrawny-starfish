@@ -78,7 +78,6 @@ router.get( '/:user_id/:id/:list_order/up', (request, response) => {
 
   if( list_order > 1 ){
     List.switchItemPriorities( list_order - 1, user_id, list_order)
-      // .then( List.moveItemPriority ( list_order, user_id, list_order - 1))
       .then( response.redirect( '/users/' + user_id ) )
   } else {
     response.redirect( '/users/' + user_id)
@@ -96,7 +95,6 @@ router.get( '/:user_id/:id/:list_order/down', (request, response) => {
   .then( length => {
     if ( list_order < parseInt(length.count) ) {
     return List.switchItemPriorities( list_order + 1, user_id, list_order)
-      // .then( List.moveItemPriority ( list_order, user_id, list_order + 1))
       .then( response.redirect( '/users/' + user_id) )
     } else {
       response.redirect( '/users/' + user_id)
@@ -134,7 +132,6 @@ router.post( '/:user_id/add', ( request, response ) => {
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
   let sortedItems;
-  console.log('reached user page')
   if( request.user !== undefined && request.user.id == id ) {
     return List.getItems( id )
       .then( items => {
