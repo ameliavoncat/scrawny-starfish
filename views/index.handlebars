@@ -1,57 +1,72 @@
-<div class="row">
-      <div id="list" class="col-xs-12">
-        <h2>My List</h2>
-          {{#each items}}
-          <form method="post">
-            <div class="columns" id="row-index-{{@index}}">
-              <div class="column is-2">
-                <a class="up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/up">
-                  <span class="icon">
-                    <i class="fa fa-angle-up"></i>
-                  </span>
-                </a>
-                <a class="down-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/down">
-                  <span class="icon">
-                    <i class="fa fa-angle-down"></i>
-                  </span>
-                </a>
-              </div>
-              <div class="column is-6">
-                <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
-                <p class="checked_{{checked}}">{{description}}</p>
-              </div>
-              <div id="buttons" class="column">
-                <a id="delete{{id}}" class="delete-btn" href="/users/{{user_id}}/{{id}}/delete">
-                  <span class="icon">
-                    <i class="fa fa-trash"></i>
-                  </span>
-                </a>
-                <a class="edit-btn" id="edit{{id}}" href="/users/{{user_id}}/{{id}}/edit">
-                  <span class="icon">
-                    <i class="fa fa-pencil"></i>
-                  </span>
-                </a>
-              </div>
-              <div class="column">
-                <a id="checked{{id}}" class="done-btn" href="/users/{{user_id}}/{{id}}/{{checked}}">
-                  <span class="icon">
-                    <i class="fa fa-check"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </form>
-          {{/each}}
+<div class="hero-head">
+  <header class="nav">
+    <div class="container">
+      <div class="nav-left">
+        <h1 class=" title nav-logo">listlike</h1>
       </div>
-      <div class="box">
-        <div id="add-item" class="control">
-          <form id="add-item-form" method="post" action="/users/{{id}}/add/">
-            <input class="input submission-form" name="todo" placeholder="Add To Do" type="text"> </input>
-            <input class="input submission-form" name="description" placeholder="Item Description" type="text"> </input>
-            <input id="add-btn" type="submit" value="Save" class="button is-primary">
-            </input>
-          </form>
+      <div class="nav-right">
+        <a id="logout-button" class="nav-item" href="/users/logout">
+          <span class="icon">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </span>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+<div id="list">
+  {{#each items}}
+    <form method="post" class="each-todo">
+      <div class="columns" id="row-index-{{@index}}">
+        <div class="column is-2">
+          <a class="up-button" id="up_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/up">
+            <span class="icon">
+              <i class="fa fa-angle-up"></i>
+            </span>
+          </a>
+          <a class="down-button" id="down_{{id}}" href="/users/{{user_id}}/{{id}}/{{list_order}}/down">
+            <span class="icon">
+              <i class="fa fa-angle-down"></i>
+            </span>
+          </a>
+        </div>
+        <div class="column is-6">
+          <h4 id="todo_{{id}}" class="checked_{{checked}}">{{todo}}</h4>
+          <p class="checked_{{checked}}">{{description}}</p>
+        </div>
+        <div id="buttons" class="column">
+          <a id="delete{{id}}" class="delete-btn" href="/users/{{user_id}}/{{id}}/delete">
+            <span class="icon">
+              <i class="fa fa-trash"></i>
+            </span>
+          </a>
+          <a class="edit-btn" id="edit{{id}}" href="/users/{{user_id}}/{{id}}/edit">
+            <span class="icon">
+              <i class="fa fa-pencil"></i>
+            </span>
+          </a>
+        </div>
+        <div class="column">
+          <a id="checked{{id}}" class="done-btn" href="/users/{{user_id}}/{{id}}/{{checked}}">
+            <span class="icon">
+              <i class="fa fa-check"></i>
+            </span>
+          </a>
         </div>
       </div>
+    </form>
+    {{/each}}
+</div>
+<div class="box">
+  <div id="add-item" class="control">
+    <form id="add-item-form" method="post" action="/users/{{id}}/add/">
+      <input class="input submission-form" name="todo" placeholder="Add To Do" type="text"> </input>
+      <input class="input submission-form" name="description" placeholder="Item Description" type="text"> </input>
+      <input id="add-btn" type="submit" value="Save" class="button is-primary">
+      </input>
+    </form>
   </div>
 </div>
+
+

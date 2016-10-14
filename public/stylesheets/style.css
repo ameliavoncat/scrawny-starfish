@@ -3,9 +3,7 @@
 }
 
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*background-color: orange;*/
 }
 
 a, a:hover, a:visited {
@@ -18,12 +16,18 @@ a, a:hover, a:visited {
 
 
 h1 {
-  font-family: 'Caveat Brush', cursive;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.nav-logo{
+  font-size: 2em;
+  margin-top:10px;
 }
 
 #splash-logo {
-  font-size: 3em;
-  margin: auto auto;
+  font-size: 5em;
+  margin-bottom: 50px;
+  font-color:white;
 }
 
 .box {
@@ -40,4 +44,14 @@ h1 {
 
 #add-btn {
   margin: 10px;
+}
+
+.each-todo {
+  padding: 5px;
+  margin:10px;
+}
+
+#list {
+  margin: 40px 50px 10px 50px;
+  margin
 }
