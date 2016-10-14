@@ -46,10 +46,14 @@ router.get( '/logout', ( request, response ) => {
 })
 
 router.get( '/:user_id/:id/delete', ( request, response ) => {
-  const { user_id, id } = request.params
-  List.deleteItem( id )
-  .then(response.redirect('/users/'+user_id))
-})
+  let { user_id, id } = request.params
+    user_id = parseInt( user_id )
+    id = parseInt( id )
+
+    List.adjustForDeletion( user_id, id )
+      .then( List.deleteItem( id ))
+        .then( response.redirect('/users/'+user_id) )
+          })
 
 router.get( '/:user_id/:id/edit', ( request, response ) => {
   const { id } = request.params
