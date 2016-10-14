@@ -136,7 +136,7 @@ router.post( '/:user_id/add', ( request, response ) => {
 router.get( '/:id', ( request, response ) => {
   const { id } = request.params
 
-  if( request.user.id == id ) {
+  if( request.user !== undefined && request.user.id == id ) {
     return List.getItems( id )
       .then( items => {
         let sortedItems = items.sort( ( a, b ) => {
